@@ -17,33 +17,33 @@ namespace BinarySearchKataTest
 
 
         [TestMethod]
-        public void WhenArrayIsEmptyReturnZero()
+        public void WhenArrayIsEmptyReturnsMinusOne()
         {
-            var result = _binarySearch.SearchFor(1, new int[] { });
+            var result = _binarySearch.SearchForKeyReturnIndex(1, new int[] { });
 
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(-1, result);
         }
 
         [TestMethod]
-        public void WhenKeyIsNotInArrayReturnZero()
+        public void WhenKeyIsNotInArrayReturnMinusOne()
         {
-            var result = _binarySearch.SearchFor(1, new int[] { 2 });
+            var result = _binarySearch.SearchForKeyReturnIndex(1, new int[] { 2 });
 
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(-1, result);
         }
 
         [TestMethod]
         public void WhenKeyIsPresentInAListOfLengthOneReturnsOne()
         {
-            var result = _binarySearch.SearchFor(1, new int[] { 1 });
+            var result = _binarySearch.SearchForKeyReturnIndex(1, new int[] { 1 });
 
-            Assert.AreEqual(1, result);
+            Assert.AreEqual(0, result);
         }
 
         [TestMethod]
         public void WhenKeyIsInTheMiddleOfAListOfLengthThreeReturnsOne()
         {
-            var result = _binarySearch.SearchFor(2, new int[] { 1, 2, 3 });
+            var result = _binarySearch.SearchForKeyReturnIndex(2, new int[] { 1, 2, 3 });
 
             Assert.AreEqual(1, result);
         }
@@ -51,15 +51,15 @@ namespace BinarySearchKataTest
         [TestMethod]
         public void WhenKeyIsInTheFirstOfAListOfLengthThreeItReturnsTwo()
         {
-            var result = _binarySearch.SearchFor(1, new int[] { 1, 2, 3 });
+            var result = _binarySearch.SearchForKeyReturnIndex(1, new int[] { 1, 2, 3 });
 
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(0, result);
         }
 
         [TestMethod]
         public void WhenKeyIsInTheLastOfAListOfLengthThreeItReturnsTwo()
         {
-            var result = _binarySearch.SearchFor(3, new int[] { 1, 2, 3 });
+            var result = _binarySearch.SearchForKeyReturnIndex(3, new int[] { 1, 2, 3 });
 
             Assert.AreEqual(2, result);
         }
@@ -67,15 +67,15 @@ namespace BinarySearchKataTest
         [TestMethod]
         public void WhenKeyIs8FromAListOfLength10ItReturns2()
         {
-            var result = _binarySearch.SearchFor(8, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+            var result = _binarySearch.SearchForKeyReturnIndex(8, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
 
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(7, result);
         }
 
         [TestMethod]
         public void WhenKeyIs24OfAListOfLength100ItReturns3()
         {
-            var result = _binarySearch.SearchFor(24, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+            var result = _binarySearch.SearchForKeyReturnIndex(24, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                                                                 11, 12, 13, 14, 15, 16, 17, 18, 19,
                                                                 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
                                                                 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
@@ -87,7 +87,7 @@ namespace BinarySearchKataTest
                                                                 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
                                                                 100 });
 
-            Assert.AreEqual(7, result);
+            Assert.AreEqual(23, result);
         }
     }
 }
