@@ -7,66 +7,57 @@ namespace BinarySearchKataTest
     [TestClass]
     public class BinarySearchTests
     {
+        private void SearchForKeyInArrayAndAssertCorrectIndex(int key, int[] array, int expectedIndex)
+        {
+            Assert.AreEqual(expectedIndex, BinarySearch.SearchForKeyReturnIndex(key, array));
+        }
+
         [TestMethod]
         public void WhenArrayIsEmptyReturnsMinusOne()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(1, new int[] { });
-
-            Assert.AreEqual(-1, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(1, new int[] { }, -1);
         }
 
         [TestMethod]
         public void WhenKeyIsNotInArrayReturnMinusOne()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(1, new int[] { 2 });
-
-            Assert.AreEqual(-1, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(1, new int[] { 2 }, -1);
         }
 
         [TestMethod]
         public void WhenKeyIsPresentInAListOfLengthOneReturnsOne()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(1, new int[] { 1 });
-
-            Assert.AreEqual(0, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(1, new int[] { 1 }, 0);
         }
 
         [TestMethod]
         public void WhenKeyIsInTheMiddleOfAListOfLengthThreeReturnsOne()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(2, new int[] { 1, 2, 3 });
-
-            Assert.AreEqual(1, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(2, new int[] { 1, 2, 3 }, 1);
         }
 
         [TestMethod]
         public void WhenKeyIsInTheFirstOfAListOfLengthThreeItReturnsTwo()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(1, new int[] { 1, 2, 3 });
-
-            Assert.AreEqual(0, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(1, new int[] { 1, 2, 3 }, 0);
         }
 
         [TestMethod]
         public void WhenKeyIsInTheLastOfAListOfLengthThreeItReturnsTwo()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(3, new int[] { 1, 2, 3 });
-
-            Assert.AreEqual(2, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(3, new int[] { 1, 2, 3 }, 2);
         }
 
         [TestMethod]
         public void WhenKeyIs8FromAListOfLength10ItReturns2()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(8, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
-
-            Assert.AreEqual(7, result);
+            SearchForKeyInArrayAndAssertCorrectIndex(8, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }, 7);
         }
 
         [TestMethod]
         public void WhenKeyIs24OfAListOfLength100ItReturns3()
         {
-            var result = BinarySearch.SearchForKeyReturnIndex(24, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+            SearchForKeyInArrayAndAssertCorrectIndex(24, new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
                                                                 11, 12, 13, 14, 15, 16, 17, 18, 19,
                                                                 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
                                                                 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
@@ -76,9 +67,7 @@ namespace BinarySearchKataTest
                                                                 70, 71, 72, 73, 74, 75, 76, 77, 78, 79,
                                                                 80, 81, 82, 83, 84, 85, 86, 87, 88, 89,
                                                                 90, 91, 92, 93, 94, 95, 96, 97, 98, 99,
-                                                                100 });
-
-            Assert.AreEqual(23, result);
+                                                                100 }, 23);
         }
     }
 }
