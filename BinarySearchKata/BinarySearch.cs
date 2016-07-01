@@ -10,34 +10,20 @@ namespace BinarySearchKata
     {
         public int SearchFor(int key, int[] array)
         {
-            if (array.Length.Equals(0))
+            if (array.Length.Equals(0) || !array.Contains(key))
                 return 0;
-            if (!array.Contains(key))
-                return -1;
-            if (array.Length.Equals(1))
-                return 1;
 
+            int low = 0, high = (array.Length - 1), iterations = 0, midPoint = 0;
 
-            int low = 0, high = (array.Length - 1);
-
-            var midPoint = (low + high) / 2;
-            int iterations = 1;
-            int currentValue = array[midPoint];
-
-            while (currentValue != key)
+            do
             {
-                if (currentValue > key)//lower half
-                {
-                    high = midPoint - 1;
-                }
-                else//higher half
-                {
-                    low = midPoint + 1;
-                }
                 midPoint = (low + high) / 2;
-                currentValue = array[midPoint];
+                if (key < array[midPoint])
+                    high = midPoint - 1;
+                else
+                    low = midPoint + 1;
                 iterations++;
-            }
+            } while (array[midPoint] != key);
 
             return iterations;
         }

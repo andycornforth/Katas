@@ -25,11 +25,11 @@ namespace BinarySearchKataTest
         }
 
         [TestMethod]
-        public void WhenKeyIsNotInArrayReturnMinusOne()
+        public void WhenKeyIsNotInArrayReturnZero()
         {
             var result = _binarySearch.SearchFor(1, new int[] { 2 });
 
-            Assert.AreEqual(-1, result);
+            Assert.AreEqual(0, result);
         }
 
         [TestMethod]
