@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BinarySearchKata
+﻿namespace BinarySearchKata
 {
-    public class BinarySearch
+    public static class BinarySearch
     {
-        public int SearchForKeyReturnIndex(int key, int[] array)
+        public static int SearchForKeyReturnIndex(int key, int[] array)
         {
             int low = 0, high = (array.Length - 1), midPoint = 0;
 
@@ -21,7 +15,7 @@ namespace BinarySearchKata
                     high = midPoint - 1;
                 else
                     low = midPoint + 1;
-            } 
+            }
             return -1;
         }
     }
